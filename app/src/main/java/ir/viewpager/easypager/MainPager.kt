@@ -1,6 +1,7 @@
 package ir.viewpager.easypager
 
 import android.os.Bundle
+import android.text.style.EasyEditSpan
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main_pager.*
 
