@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 
 
-class EasyragmentFragmentStatePager constructor(fragmentmanager: FragmentManager, items: ArrayList<Fragment>) :
+class EasyragmentFragmentStatePager constructor(fragmentmanager: FragmentManager, items: Fragment) :
     FragmentStatePagerAdapter(fragmentmanager) {
 
 
@@ -19,6 +19,6 @@ class EasyragmentFragmentStatePager constructor(fragmentmanager: FragmentManager
       return  mFragmentList.size
     }
 
-    private val mFragmentList: ArrayList<Fragment> = items
+    private val mFragmentList: ArrayList<Fragment> = arrayListOf(items)
 
 }
