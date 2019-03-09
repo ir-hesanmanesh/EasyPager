@@ -1,4 +1,4 @@
-package ir.viewpager.pager
+package ir.sample.pager
 
 import org.junit.Test
 
