@@ -1,9 +1,7 @@
-package ir.viewpager.easypager
+package ir.viewpager.pager
 
 import android.os.Bundle
-import android.text.style.EasyEditSpan
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main_pager.*
 
 
 class MainPager : AppCompatActivity() {
@@ -12,6 +10,6 @@ class MainPager : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_pager)
-
+       
     }
 }

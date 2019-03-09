@@ -1,4 +1,4 @@
-package ir.viewpager.easypager
+package ir.viewpager.pager
 
 
 
@@ -20,6 +20,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("ir.viewpager.easypager", appContext.packageName)
+        assertEquals("ir.viewpager.pager", appContext.packageName)
     }
 }
