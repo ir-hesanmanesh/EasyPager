@@ -1,5 +1,5 @@
 # EasyPager
-
+[![](https://jitpack.io/v/ir-hesanmanesh/EasyPager.svg)](https://jitpack.io/#ir-hesanmanesh/EasyPager)
 https://ir-hesanmanesh.github.io/EasyPager/
 
 
