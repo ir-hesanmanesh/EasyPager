@@ -1,15 +1,12 @@
-package ir.sample.easypagerview
+package ir.libpager.easypagerview
 
 import android.content.Context
 import android.os.Handler
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.animation.LinearInterpolator
-import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
-import ir.viewpager.easypagerview.R
-import java.time.Duration
-import kotlin.random.Random
+
 
 class EasyViewPager @JvmOverloads constructor(
     context: Context,
