@@ -1,6 +1,6 @@
 # EasyPager
 
-This site was built using [GitHub Pages](https://ir-hesanmanesh.github.io/EasyPager/).
+https://ir-hesanmanesh.github.io/EasyPager/
 
 
 
