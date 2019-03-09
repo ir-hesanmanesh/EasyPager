@@ -5,6 +5,7 @@ import android.os.Handler
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.animation.LinearInterpolator
+import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import java.time.Duration
 import kotlin.random.Random
@@ -97,6 +98,10 @@ class Easyviewpager @JvmOverloads constructor(
         slideHandler = null
     }
 
+     fun setAdapter(adapter: EasyragmentFragmentStatePager) {
+
+        super.setAdapter(adapter)
+    }
 
     /**
      * Calls the specified function [block] with `this` value as its argument and returns `this` value.
