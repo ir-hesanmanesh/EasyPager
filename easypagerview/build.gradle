@@ -33,5 +33,6 @@ android {
         implementation 'androidx.viewpager:viewpager:1.0.0'
         androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
         androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.2-alpha01'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api'
 
-}
+    }
