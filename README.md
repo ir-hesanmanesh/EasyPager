@@ -1,6 +1,6 @@
 # EasyPager
 
-https://jitpack.io/#io.github.ir-hesanmanesh/EasyPager
+https://ir-hesanmanesh.github.io/EasyPager/
 
 
 
