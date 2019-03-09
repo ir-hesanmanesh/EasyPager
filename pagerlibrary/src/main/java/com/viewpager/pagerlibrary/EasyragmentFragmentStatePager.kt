@@ -1,4 +1,4 @@
-package ir.libpager.easypagerview
+package com.viewpager.pagerlibrary
 
 
 import androidx.fragment.app.Fragment

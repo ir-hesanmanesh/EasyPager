@@ -1,4 +1,4 @@
-package ir.libpager.easypagerview
+package com.viewpager.pagerlibrary
 
 import android.content.Context
 import android.os.Handler

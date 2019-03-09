@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ir.libpager.easypagerview.EasyViewPager
+<com.viewpager.pagerlibrary.EasyViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,4 +12,4 @@
         app:velocity="100">
 
 
-</ir.libpager.easypagerview.EasyViewPager>
+</com.viewpager.pagerlibrary.EasyViewPager>
