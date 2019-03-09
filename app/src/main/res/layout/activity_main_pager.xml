@@ -6,10 +6,5 @@
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context="ir.viewpager.pager.MainPager">
 
-<ir.viewpager.easypagerview.Easyviewpager
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-</ir.viewpager.easypagerview.Easyviewpager>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

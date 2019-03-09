@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="Easyviewpager">
+    <declare-styleable name="EasyViewPager">
         <attr name="duration" format="integer" />
         <attr name="Scroll" format="boolean" />
-        <attr name="velocitying" format="integer" />
+        <attr name="velocity" format="integer" />
     </declare-styleable>
 </resources>

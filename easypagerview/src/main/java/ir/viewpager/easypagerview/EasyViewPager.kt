@@ -10,7 +10,7 @@ import androidx.viewpager.widget.ViewPager
 import java.time.Duration
 import kotlin.random.Random
 
-class Easyviewpager @JvmOverloads constructor(
+class EasyViewPager @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0,
@@ -145,12 +145,12 @@ class Easyviewpager @JvmOverloads constructor(
 
     init {
         if (attrs != null) {
-            val typeArray = context.obtainStyledAttributes(attrs, R.styleable.Easyviewpager, defStyle, defStyleRes)
+            val typeArray = context.obtainStyledAttributes(attrs, R.styleable.EasyViewPager, defStyle, defStyleRes)
             try {
                 typeArray.let {
-                    scroll = it.getBoolean(R.styleable.Easyviewpager_Scroll, DEFAULT_SCROLL)
-                    duration = it.getInt(R.styleable.Easyviewpager_duration, DEFAULT_DURATION)
-                    velocity = it.getInt(R.styleable.Easyviewpager_velocitying, DEFAULT_VELOCITY)
+                    scroll = it.getBoolean(R.styleable.EasyViewPager_Scroll, DEFAULT_SCROLL)
+                    duration = it.getInt(R.styleable.EasyViewPager_duration, DEFAULT_DURATION)
+                    velocity = it.getInt(R.styleable.EasyViewPager_velocity, DEFAULT_VELOCITY)
 
                 }
             } finally {
