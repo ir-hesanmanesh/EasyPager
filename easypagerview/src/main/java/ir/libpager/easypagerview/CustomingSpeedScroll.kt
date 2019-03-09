@@ -1,4 +1,4 @@
-package ir.viewpager.easypagerview
+package ir.sample.easypagerview
 
 import android.content.Context
 import android.view.animation.Interpolator

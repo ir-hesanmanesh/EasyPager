@@ -2,7 +2,7 @@ package ir.sample.pager
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import ir.viewpager.pager.R
+
 
 
 class MainPager : AppCompatActivity() {

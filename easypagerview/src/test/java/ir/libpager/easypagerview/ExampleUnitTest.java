@@ -1,4 +1,4 @@
-package ir.viewpager.easypagerview;
+package ir.sample.easypagerview;
 
 
 import org.junit.Test;

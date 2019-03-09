@@ -1,4 +1,4 @@
-package ir.viewpager.easypagerview
+package ir.sample.easypagerview
 
 import android.content.Context
 import android.os.Handler
@@ -7,6 +7,7 @@ import android.view.MotionEvent
 import android.view.animation.LinearInterpolator
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import ir.viewpager.easypagerview.R
 import java.time.Duration
 import kotlin.random.Random
 
@@ -145,12 +146,22 @@ class EasyViewPager @JvmOverloads constructor(
 
     init {
         if (attrs != null) {
-            val typeArray = context.obtainStyledAttributes(attrs, R.styleable.EasyViewPager, defStyle, defStyleRes)
+            val typeArray = context.obtainStyledAttributes(attrs,
+                R.styleable.EasyViewPager, defStyle, defStyleRes)
             try {
                 typeArray.let {
-                    scroll = it.getBoolean(R.styleable.EasyViewPager_Scroll, DEFAULT_SCROLL)
-                    duration = it.getInt(R.styleable.EasyViewPager_duration, DEFAULT_DURATION)
-                    velocity = it.getInt(R.styleable.EasyViewPager_velocity, DEFAULT_VELOCITY)
+                    scroll = it.getBoolean(
+                        R.styleable.EasyViewPager_Scroll,
+                        DEFAULT_SCROLL
+                    )
+                    duration = it.getInt(
+                        R.styleable.EasyViewPager_duration,
+                        DEFAULT_DURATION
+                    )
+                    velocity = it.getInt(
+                        R.styleable.EasyViewPager_velocity,
+                        DEFAULT_VELOCITY
+                    )
 
                 }
             } finally {
