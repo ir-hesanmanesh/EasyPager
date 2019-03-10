@@ -6,14 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 
-class EasyPageAdapter : PagerAdapter() {
+ class EasyPageAdapter constructor(private val adapter: PagerAdapter?) : PagerAdapter() {
 
 
-    companion object {
-        private val adapter: PagerAdapter? = null
-    }
 
-    override fun getCount(): Int {
+     override fun getCount(): Int {
         return adapter!!.count + 2
     }
 
@@ -49,8 +46,8 @@ class EasyPageAdapter : PagerAdapter() {
         return view == `object`
     }
 
-    override fun equals(obj: Any?): Boolean {
-        return adapter == obj
+    override fun equals(other: Any?): Boolean {
+        return adapter == other
     }
 
     override fun hashCode(): Int {
@@ -96,5 +93,7 @@ class EasyPageAdapter : PagerAdapter() {
     override fun unregisterDataSetObserver(observer: DataSetObserver) {
         return adapter!!.unregisterDataSetObserver(observer)
     }
+
+
 
 }

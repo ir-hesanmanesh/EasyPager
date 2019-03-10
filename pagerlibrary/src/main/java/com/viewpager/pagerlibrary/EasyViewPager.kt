@@ -61,4 +61,7 @@ class EasyViewPager  constructor(context: Context, attrs: AttributeSet?) : ViewP
         super.setAdapter(mAdapter)
         currentItem = 1
     }
+
+
+
 }
