@@ -1,178 +1,65 @@
 package com.viewpager.pagerlibrary
 
 import android.content.Context
-import android.os.Handler
+import android.graphics.Color
 import android.util.AttributeSet
-import android.view.MotionEvent
-import android.view.animation.LinearInterpolator
+import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 
+class EasyViewPager constructor(context: Context, attrs: AttributeSet?) : ViewPager(context, attrs) {
 
-class EasyViewPager @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyle: Int = 0,
-    defStyleRes: Int = 0
-) :
-    ViewPager(context, attrs) {
+    private var colors: IntArray? = intArrayOf()
+    private var mAdapter: EasyPageAdapter? = null
 
-    /**
-     * ViewPager Mode
-     * DEFAULT, SLIDESHOW
-     */
-    private var mode: Mode = Mode.DEFAULT
+    val backGroundColors: Int
+        get() = if (colors == null) 0 else colors!!.size
 
-    /**
-     * ViewPager can scroll or not
-     */
-    private var scroll: Boolean = DEFAULT_SCROLL
-    /**
-     * ViewPager Page Change Duration
-     */
-    private var duration: Int = DEFAULT_DURATION
+    private val mOnPageChangeListener = object : ViewPager.OnPageChangeListener {
+        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+            if (mAdapter != null) {
+                val nextColor = colors!![(mAdapter!!.getIndex(position) + 1) % colors!!.size]
+                val currentColor = colors!![mAdapter!!.getIndex(position) % colors!!.size]
+                val currentRed = (currentColor shr 16 and 0xff).toFloat()
+                val currentGreen = (currentColor shr 8 and 0xff).toFloat()
+                val currentBlue = (currentColor and 0xff).toFloat()
+                val nextRed = (nextColor shr 16 and 0xff).toFloat()
+                val nextGreen = (nextColor shr 8 and 0xff).toFloat()
+                val nextBlue = (nextColor and 0xff).toFloat()
 
-    /**
-     * Slider Handler
-     */
-    private var slideHandler: Handler? = null
-
-    /**
-     * Pager Slider
-     */
-    private val pagerSlider = object : Runnable {
-        override fun run() {
-            if (isLastItems()) {
-                currentItem = 0
-            } else {
-                currentItem += 1
+                val newRed = (currentRed + (nextRed - currentRed) * positionOffset).toInt()
+                val newGreen = (currentGreen + (nextGreen - currentGreen) * positionOffset).toInt()
+                val newBlue = (currentBlue + (nextBlue - currentBlue) * positionOffset).toInt()
+                setBackgroundColor(Color.rgb(newRed, newGreen, newBlue))
             }
-            slideHandler?.postDelayed(this, duration.toLong())
         }
 
-    }
-    /**
-     * ViewPageR scroll speed
-     */
-    var velocity: Int = DEFAULT_VELOCITY
-        set(value) {
-            field = value
-            initVelocity()
-        }
+        override fun onPageSelected(position: Int) {}
 
-    private fun initVelocity() {
-        if (velocity > 0)
-            addCustomingSpeedScroll()
-    }
-
-    override fun onTouchEvent(ev: MotionEvent?): Boolean = scroll && super.onTouchEvent(ev)
-
-    override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean = scroll && super.onInterceptTouchEvent(ev)
-    fun enableScroll() {
-        scroll = true
-    }
-
-    fun disableScroll() {
-        scroll = false
-    }
-
-    fun startSliding(duration: Int) {
-        checkPagerSliding()
-        if (duration <= MIN_DURATION) {
-            throw IllegalArgumentException("Duration cannot be less than min duration!")
-        }
-    }
-
-    fun startSliding() {
-        checkPagerSliding()
-        slide()
-    }
-
-    fun stopSliding() {
-        if (mode != Mode.SLIDESHOW) {
-            throw IllegalStateException("ViewPager is not sliding..")
-        }
-        mode = Mode.DEFAULT
-        slideHandler?.removeCallbacks(pagerSlider)
-        slideHandler = null
-    }
-
-     fun setAdapter(adapter: EasyragmentFragmentStatePager) {
-
-        super.setAdapter(adapter)
-    }
-
-    /**
-     * Calls the specified function [block] with `this` value as its argument and returns `this` value.
-     **/
-    private fun slide() {
-        mode = Mode.SLIDESHOW
-        slideHandler = Handler().also { it.postDelayed(pagerSlider, duration.toLong()) }
-    }
-
-    private fun checkPagerSliding() {
-        if (mode == Mode.SLIDESHOW) {
-            throw IllegalStateException("ViewPager is already sliding..")
-        }
-        if (adapter == null || adapter?.count == 0) {
-            throw IllegalArgumentException("Nothing to slide!")
-        }
-    }
-
-    private fun addCustomingSpeedScroll() {
-        try {
-            ViewPager::class.java.getDeclaredField(SCROLLER_FIELD_NAME)?.apply {
-                isAccessible = true
-
-            }.also {
-                it?.set(this, CustomingSpeedScroll(context, LinearInterpolator(), velocity))
+        override fun onPageScrollStateChanged(state: Int) {
+            if (state == ViewPager.SCROLL_STATE_IDLE) {
+                val position = currentItem
+                if (position == 0) {
+                    setCurrentItem(colors!!.size, false)
+                } else if (position == adapter!!.count - 1) {
+                    setCurrentItem(1, false)
+                }
             }
-
-        } catch (e: NoSuchFieldException) {
-            e.printStackTrace()
-        } catch (e: IllegalArgumentException) {
-            e.printStackTrace()
-        } catch (e: IllegalAccessException) {
-            e.printStackTrace()
         }
     }
-
-
-    private fun isLastItems() = currentItem == adapter?.count!! - 1
-
-    enum class Mode { DEFAULT, SLIDESHOW }
 
     init {
-        if (attrs != null) {
-            val typeArray = context.obtainStyledAttributes(attrs,
-                R.styleable.EasyViewPager, defStyle, defStyleRes)
-            try {
-                typeArray.let {
-                    scroll = it.getBoolean(
-                        R.styleable.EasyViewPager_Scroll,
-                        DEFAULT_SCROLL
-                    )
-                    duration = it.getInt(
-                        R.styleable.EasyViewPager_duration,
-                        DEFAULT_DURATION
-                    )
-                    velocity = it.getInt(
-                        R.styleable.EasyViewPager_velocity,
-                        DEFAULT_VELOCITY
-                    )
-
-                }
-            } finally {
-                typeArray.recycle()
-            }
-        }
+        addOnPageChangeListener(mOnPageChangeListener)
     }
 
-    companion object {
-        private const val DEFAULT_DURATION = 5000
-        private const val DEFAULT_SCROLL = true
-        private const val DEFAULT_VELOCITY = 0
-        private const val MIN_DURATION = 100
-        private const val SCROLLER_FIELD_NAME = "mScroller"
+    fun setBackGroundColors(colors: IntArray) {
+        this.colors = colors
+        setBackgroundColor(colors[colors.size - 1])
+    }
 
+    override fun setAdapter(adapter: PagerAdapter?) {
+        mAdapter = EasyPageAdapter(adapter)
+        super.setAdapter(mAdapter)
+        currentItem = 1
     }
 }
