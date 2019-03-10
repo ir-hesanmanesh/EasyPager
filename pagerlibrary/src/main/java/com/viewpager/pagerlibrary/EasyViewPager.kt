@@ -3,11 +3,10 @@ package com.viewpager.pagerlibrary
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
-import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 
-class EasyViewPager constructor(context: Context, attrs: AttributeSet?) : ViewPager(context, attrs) {
+class EasyViewPager  constructor(context: Context, attrs: AttributeSet?) : ViewPager(context, attrs) {
 
     private var colors: IntArray? = intArrayOf()
     private var mAdapter: EasyPageAdapter? = null

@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 
-class EasyPageAdapter constructor(private val adapter: PagerAdapter?) :
-    PagerAdapter() {
+class EasyPageAdapter : PagerAdapter() {
 
+
+    companion object {
+        private val adapter: PagerAdapter? = null
+    }
 
     override fun getCount(): Int {
         return adapter!!.count + 2
